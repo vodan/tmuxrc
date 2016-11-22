@@ -2,6 +2,10 @@
     link:
         relink: true
         create: true
+    shell:
+        stdin: true
+        stdout: true
+        stderr: true
 
 - clean: ['~']
 
@@ -10,3 +14,5 @@
 
 - shell:
     - [mkdir -p ~/.tmux, Creating initial directory]
+    - ["if [ ! -d ~/.tmux/plugins/tpm ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi", Cloning tpm if not already done]
+    - [~/.tmux/plugins/tpm/bin/install_plugins, install all plugins if not already done]
